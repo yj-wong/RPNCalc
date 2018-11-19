@@ -11,7 +11,7 @@ struct lexToken {
 
 void freeToken(struct lexToken *token);
 struct lexToken *nextToken();
+struct lexToken *intToken();
 void dumpToken(FILE *fd, struct lexToken *token);
 void printToken(FILE *fd, struct lexToken *token);
 struct lexToken *allocToken();
-

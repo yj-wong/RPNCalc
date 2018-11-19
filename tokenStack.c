@@ -10,6 +10,7 @@ struct tokenStack *createTokenStack()
     fprintf(stderr,"createTokenStack: out of memory, aborting\n");
     exit(1);
   }
+  stack->size = 0;
   stack->top = 0;
   return stack;
 }
@@ -19,6 +20,7 @@ void pushTokenStack(struct tokenStack *stack, struct lexToken *token) {
     fprintf(stderr, "pushTokenStack: out of stack space, aborting\n");
     exit(1);
   }
+  stack->size ++;
   stack->e[stack->top++] = token;
 }
 
@@ -27,6 +29,7 @@ struct lexToken *popTokenStack(struct tokenStack *stack) {
     fprintf(stderr,"popTokenStack: popping an empty stack, aborting\n");
     exit(1);
   }
+  stack->size --;
   return stack->e[--(stack->top)];
 }
 

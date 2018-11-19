@@ -12,7 +12,7 @@ rpnCalc:	rpnCalc.o doOperator.o liblexical.a
 	$(CC)  -o $@ $^ -L. -llexical
 
 %.o:	 %.c $(INCL)
-	$(CC) $(CFLAGS) -c -o $@ $< 
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 liblexical.a:	lexical.o nextInputChar.o tokenStack.o
 	ar rcs liblexical.a lexical.o nextInputChar.o tokenStack.o

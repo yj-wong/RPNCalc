@@ -72,7 +72,7 @@ void printToken(FILE *fd, struct lexToken *token)
   }
 }
 
-struct lexToken *nextToken() 
+struct lexToken *nextToken()
 {
   int c;
   struct lexToken *token;
@@ -106,7 +106,7 @@ struct lexToken *nextToken()
           token->symbol[0] = c;
           symbolLength = 1;
           state = STATE_S4;
-        } else 
+        } else
           fprintf(stderr,"nextToken: bad char %c in input stream, ignored\n",c);
       }
       break;
@@ -154,7 +154,21 @@ struct lexToken *nextToken()
   }
 }
 
-  
-        
-     
-    
+struct lexToken *intToken(int v)
+{
+  struct lexToken *token;
+  char intStr[10];
+  int i = 0;
+
+  token = allocToken();
+  sprintf(intStr, "%d", v);
+  /*printf("%s\n", intStr);*/
+
+  token->kind = LEX_TOKEN_NUMBER;
+
+  while(intStr[i] != '\0') {
+    token->symbol[i] = intStr[i];
+    i++;
+  }
+    return token;
+}
